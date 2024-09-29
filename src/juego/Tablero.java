@@ -14,13 +14,8 @@ public class Tablero {
     private String[][] tableroPrincipal;
     private boolean[][] miniCuadradosDisponibles;
 
-    // Constructor
-    public Tablero() {
-        // Inicializa un nuevo tablero
-    }
-
     // Métodos
-    
+
     /** Inicializa un nuevo tablero */
     public void nuevoTablero() {
         // Inicializa el tablero con valores predeterminados
@@ -62,5 +57,5 @@ public class Tablero {
         // Verifica si la jugada es válida
         return true;
     }
-    
+
 }
