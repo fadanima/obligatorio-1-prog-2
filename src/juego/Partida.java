@@ -21,12 +21,12 @@ public class Partida {
     private String resultado;
 
     // Métodos
-    
+
     /** Inicia una nueva partida entre los jugadores */
     public void nuevaPartida(Jugador jugadorRojo, Jugador jugadorAzul) {
         // Inicializa una nueva partida con los jugadores dados
     }
-    
+
     /** Registra una jugada del jugador en la partida */
     public void registrarJugada(Jugador jugador, String coordenada) {
         // Valida y registra la jugada en el tablero
@@ -41,12 +41,18 @@ public class Partida {
     public void ejecutarJugadaCPU() {
         // Genera y registra una jugada de la CPU
     }
-    
+
+    /** Verifica si la jugada es válida */
+    public boolean esJugadaValida(String coordenada) {
+        // Verifica si la jugada es válida
+        return true;
+    }
+
     /** Cambia el turno al siguiente jugador */
     public void cambiarTurno() {
         // Cambia el turno de un jugador al otro
     }
-    
+
     /** Retorna el jugador que tiene el turno actual */
     public Jugador getTurnoActual() {
         return turnoActual;
@@ -66,7 +72,7 @@ public class Partida {
     public void finalizarPartida() {
         // Marca la partida como finalizada y establece el resultado
     }
-    
+
     public void abandonarPartida() {
         // Marca la partida como finalizada y establece el resultado
     }
@@ -75,5 +81,5 @@ public class Partida {
     public boolean isPartidaFinalizada() {
         return finalizada;
     }
-    
+
 }

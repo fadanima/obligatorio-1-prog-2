@@ -59,10 +59,4 @@ public class Tablero {
         // Muestra el tablero en su estado actual
     }
 
-    /** Verifica si la jugada es válida */
-    public boolean esJugadaValida(String coordenada) {
-        // Verifica si la jugada es válida
-        return true;
-    }
-
 }
