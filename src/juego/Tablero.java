@@ -12,7 +12,7 @@ public class Tablero {
 
     // Atributos
     private MiniTablero[][] tableroPrincipal;
-    private MiniTablero[][] ganadoreMiniTableros;
+    private MiniTablero[][] ganadoresMiniTableros;
 
     // Métodos
 
