@@ -73,6 +73,53 @@ public class MiniTablero {
         return retorno;
     }
 
+    public String determinarGanador() {
+        String resultado = "indeterminado";
+        // Checkeo de filas
+        for (int i = 0; i < 3; i++) {
+            if (!this.miniTablero[i][0].isEmpty() &&
+                    this.miniTablero[i][0].equals(this.miniTablero[i][1]) &&
+                    this.miniTablero[i][1].equals(this.miniTablero[i][2])) {
+                resultado = this.miniTablero[i][0];
+            }
+        }
+        // Checkeo de columnas
+        for (int j = 0; j < 3; j++) {
+            if (!this.miniTablero[0][j].isEmpty() &&
+                    this.miniTablero[0][j].equals(this.miniTablero[1][j]) &&
+                    this.miniTablero[1][j].equals(this.miniTablero[2][j])) {
+                resultado = this.miniTablero[0][j];
+            }
+        }
+        // Checkeo de diagonales
+        if (!this.miniTablero[0][0].isEmpty() &&
+                this.miniTablero[0][0].equals(this.miniTablero[1][1]) &&
+                this.miniTablero[1][1].equals(this.miniTablero[2][2])) {
+            resultado = this.miniTablero[0][0];
+        }
+        if (!this.miniTablero[0][2].isEmpty() &&
+                this.miniTablero[0][2].equals(this.miniTablero[1][1]) &&
+                this.miniTablero[1][1].equals(this.miniTablero[2][0])) {
+            resultado = this.miniTablero[0][2];
+        }
+        // Checkeo de empate
+        if (estaLleno() && resultado == "indeterminado") {
+            resultado = "empate";
+        }
+        return resultado;
+    }
+
+    public boolean estaLleno() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (this.miniTablero[i][j].isEmpty()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     public void setMiniTablero(String[][] miniTablero) {
         this.miniTablero = miniTablero;
     }

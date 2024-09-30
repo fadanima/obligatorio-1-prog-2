@@ -22,9 +22,18 @@ public class Prueba {
         MiniTablero miniTablero = new MiniTablero();
         miniTablero.setMiniTablero(tableroPrueba);
         System.out.println(miniTablero.toString());
+        System.out.println("");
 
         miniTablero.jugada("A1", "X");
         System.out.println(miniTablero.toString());
+        System.out.println("");
+
+        miniTablero.jugada("C1", "O");
+        System.out.println(miniTablero.toString());
+        System.out.println("");
+
+        System.out.println(miniTablero.estaLleno());
+        System.out.println(miniTablero.determinarGanador());
 
     }
 
