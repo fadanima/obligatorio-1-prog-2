@@ -12,12 +12,12 @@ public class Tablero {
 
     // Atributos
     private MiniTablero[][] tableroPrincipal;
-    private MiniTablero[][] ganadoresMiniTableros;
+    private MiniTablero ganadoresMiniTableros;
 
     // Métodos
 
     /** Inicializa un nuevo tablero */
-    public void nuevoTablero() {
+    public Tablero() {
         this.tableroPrincipal = new MiniTablero[3][3];
 
         for (int i = 0; i < 3; i++) {
@@ -49,14 +49,32 @@ public class Tablero {
         return false;
     }
 
-    /** Actualiza el estado del tablero con una nueva jugada */
-    public void actualizarTablero(String coordenada, String valor) {
-        // Cambia el valor de la casilla en la coordenada especificada
+    public void setTablero(int fila, int columna, MiniTablero miniTablero) {
+        this.tableroPrincipal[fila][columna] = miniTablero;
     }
 
-    /** Muestra el estado actual del tablero */
-    public void mostrarTablero() {
-        // Muestra el tablero en su estado actual
+    @Override
+    /** Muestra el tablero en su estado actual **/
+    public String toString() {
+        String retorno = "";
+        String lineaAsteriscos = "*".repeat(19) + "\n";
+        String lineaHorizontal = "*-+-+-*-+-+-*-+-+-*\n";
+
+        for (int i = 0; i < 3; i++) {
+            retorno += lineaAsteriscos;
+
+            for (int j = 0; j < 3; j++) {
+                retorno += "*";
+                for (int k = 0; k < 3; k++) {
+                    retorno += this.tableroPrincipal[i][j].filaToString(k) + "*";
+                }
+                retorno += "\n";
+                retorno += lineaHorizontal;
+            }
+        }
+        retorno += lineaAsteriscos;
+
+        return retorno;
     }
 
 }

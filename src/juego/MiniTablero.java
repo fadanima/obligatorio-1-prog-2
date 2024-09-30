@@ -124,25 +124,31 @@ public class MiniTablero {
         this.miniTablero = miniTablero;
     }
 
+    public String filaToString(int numeroDeFila) {
+        String retorno = "";
+
+        for (int i = 0; i < this.miniTablero[numeroDeFila].length; i++) {
+            if (this.miniTablero[numeroDeFila][i].isEmpty()) {
+                retorno += " "; // Si el casillero está vacío agrega un espacio
+            } else {
+                retorno += this.miniTablero[numeroDeFila][i]; // Si no está vacío agrega el valor
+            }
+            if (i < this.miniTablero[numeroDeFila].length - 1) {
+                retorno += "|"; // Agrega las barras divisorias entre columnas
+            }
+        }
+        return retorno;
+
+    }
+
     @Override
     public String toString() {
         String retorno = "";
         for (int i = 0; i < this.miniTablero.length; i++) {
-            for (int j = 0; j < this.miniTablero[0].length; j++) {
-                if (j == 0) {
-                    retorno += " "; // Agrega un espacio antes de la primera columna
-                }
-                if (this.miniTablero[i][j].isEmpty()) {
-                    retorno += " "; // Si el casillero está vacío agrega un espacio
-                } else {
-                    retorno += this.miniTablero[i][j]; // Si no está vacío agrega el valor
-                }
-                if (j < this.miniTablero[i].length - 1) {
-                    retorno += " | "; // Agrega las barras divisorias entre columnas
-                }
-            }
-            if (i < this.miniTablero.length - 1) {
-                retorno += "\n"; // Agrega un salto de línea cuando termina con la fila
+            if (!(i < 2)) { // Revisa si no es la ultima columna
+                retorno += this.filaToString(i);
+            } else {
+                retorno += this.filaToString(i) + "\n"; // En caso de que si le agrega un salto de liena
             }
         }
         return retorno;
