@@ -11,19 +11,26 @@ package juego;
 public class Tablero {
 
     // Atributos
-    private String[][] tableroPrincipal;
-    private boolean[][] miniCuadradosDisponibles;
+    private MiniTablero[][] tableroPrincipal;
+    private MiniTablero[][] ganadoreMiniTableros;
 
     // Métodos
 
     /** Inicializa un nuevo tablero */
     public void nuevoTablero() {
-        // Inicializa el tablero con valores predeterminados
+        this.tableroPrincipal = new MiniTablero[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                this.tableroPrincipal[i][j] = new MiniTablero();
+            }
+        }
+
     }
 
     /** Realiza una jugada en el tablero */
     public void jugada(String tipoJugador, String coordenada, String coordenadaMiniTablero) {
-        // Ejecuta una jugada en el tablero
+
     }
 
     /** Ejecuta la jugada mágica en el mini-tablero */
