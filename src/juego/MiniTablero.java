@@ -105,8 +105,14 @@ public class MiniTablero {
             resultado = this.miniTablero[0][2];
         }
         // Checkeo de empate
-        if (estaLleno() && resultado == "indeterminado") {
-            resultado = "empate";
+        if (estaLleno() && resultado == "indeterminado" || resultado == "E") {
+            /*
+             * Se agrega checkeo con caracter "E" dado a que en el tablero donde registramos
+             * los ganadores,
+             * el caracter "E" se usa para indicar los empates
+             */
+
+            resultado = "E";
         }
         return resultado;
     }
