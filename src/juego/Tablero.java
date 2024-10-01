@@ -50,7 +50,7 @@ public class Tablero {
     }
 
     /** Verifica si el tablero está completo */
-    public boolean tableroCompleto() {
+    public boolean estaLleno() {
         boolean retorno = true;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
