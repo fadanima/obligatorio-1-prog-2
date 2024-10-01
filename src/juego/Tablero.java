@@ -117,16 +117,16 @@ public class Tablero {
     /** Muestra el tablero en su estado actual **/
     public String toString() {
         String retorno = "";
-        String lineaAsteriscos = "*".repeat(19) + "\n";
-        String lineaHorizontal = "*-+-+-*-+-+-*-+-+-*\n";
+        String lineaAsteriscos = "*".repeat(25) + "\n";
+        String lineaHorizontal = "*--+-+--*--+-+--*--+-+--*\n";
 
         for (int i = 0; i < 3; i++) {
             retorno += lineaAsteriscos;
 
             for (int j = 0; j < 3; j++) {
-                retorno += "*";
+                retorno += "* ";
                 for (int k = 0; k < 3; k++) {
-                    retorno += this.tableroPrincipal[i][j].filaToString(k) + "*";
+                    retorno += this.tableroPrincipal[i][k].filaToString(j) + " * ";
                 }
                 retorno += "\n";
                 retorno += lineaHorizontal;
