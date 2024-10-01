@@ -11,8 +11,8 @@ package juego;
 public class Tablero {
 
     // Atributos
-    private MiniTablero[][] tableroPrincipal;
-    private MiniTablero ganadoresMiniTableros;
+    private MiniTablero[][] tableroPrincipal; // Matriz para almacenar los mini-tableros
+    private MiniTablero ganadoresMiniTableros; // Minitablero para registrar los ganadores
 
     // Métodos
 
@@ -98,7 +98,7 @@ public class Tablero {
         return retorno;
     }
 
-    public void setTablero(int fila, int columna, MiniTablero miniTablero) {
+    public void setMiniTablero(int fila, int columna, MiniTablero miniTablero) {
         this.tableroPrincipal[fila][columna] = miniTablero;
     }
 
