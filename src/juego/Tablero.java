@@ -109,6 +109,10 @@ public class Tablero {
         this.tableroPrincipal[fila][columna] = miniTablero;
     }
 
+    public MiniTablero getGanadoresMiniTableros() {
+        return this.ganadoresMiniTableros;
+    }
+
     @Override
     /** Muestra el tablero en su estado actual **/
     public String toString() {
