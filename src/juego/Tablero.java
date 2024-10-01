@@ -26,11 +26,14 @@ public class Tablero {
             }
         }
 
+        this.ganadoresMiniTableros = new MiniTablero();
+
     }
 
     /** Realiza una jugada en el tablero */
-    public void jugada(String tipoJugador, String coordenada, String coordenadaMiniTablero) {
-
+    public boolean jugada(String tipoJugador, String coordenada, String coordenadaMiniTablero) {
+        MiniTablero miniTablero = this.tableroPrincipal[getFila(coordenada)][getColumna(coordenada)];
+        return miniTablero.jugada(coordenadaMiniTablero, tipoJugador);
     }
 
     /** Ejecuta la jugada mágica en el mini-tablero */
@@ -38,15 +41,53 @@ public class Tablero {
         // Realiza una jugada mágica en un mini-tablero
     }
 
-    /** Deshabilita un mini-cuadrado para que no se pueda usar más */
-    public void deshabilitarMiniCuadrado(String coordenada) {
-        // Deshabilita la casilla especificada
-    }
-
     /** Verifica si el tablero está completo */
     public boolean tableroCompleto() {
-        // Retorna true si el tablero está completamente lleno
-        return false;
+        boolean retorno = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                retorno = retorno && this.tableroPrincipal[i][j].estaLleno();
+            }
+        }
+        return retorno;
+    }
+
+    private int getFila(String coordenada) {
+        int retorno;
+        switch (coordenada.charAt(0)) {
+            case 'A':
+                retorno = 0;
+                break;
+            case 'B':
+                retorno = 1;
+                break;
+            case 'C':
+                retorno = 2;
+                break;
+            default:
+                retorno = -1;
+                break;
+        }
+        return retorno;
+    }
+
+    private int getColumna(String coordenada) {
+        int retorno;
+        switch (coordenada.charAt(1)) {
+            case '1':
+                retorno = 0;
+                break;
+            case '2':
+                retorno = 1;
+                break;
+            case '3':
+                retorno = 2;
+                break;
+            default:
+                retorno = -1;
+                break;
+        }
+        return retorno;
     }
 
     public void setTablero(int fila, int columna, MiniTablero miniTablero) {
