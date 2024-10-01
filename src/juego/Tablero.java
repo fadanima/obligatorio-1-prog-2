@@ -60,6 +60,9 @@ public class Tablero {
         return retorno;
     }
 
+    /**
+     * Dada una coordenada, devuelve el valor númerico de la fila correspondiente
+     */
     private int getFila(String coordenada) {
         int retorno;
         switch (coordenada.charAt(0)) {
@@ -79,6 +82,9 @@ public class Tablero {
         return retorno;
     }
 
+    /**
+     * Dada una coordenada, devuelve el valor númerico de la columna correspondiente
+     */
     private int getColumna(String coordenada) {
         int retorno;
         switch (coordenada.charAt(1)) {
@@ -98,6 +104,7 @@ public class Tablero {
         return retorno;
     }
 
+    /** Asigna un MiniTablero a una coordenada del tablero principal **/
     public void setMiniTablero(int fila, int columna, MiniTablero miniTablero) {
         this.tableroPrincipal[fila][columna] = miniTablero;
     }
