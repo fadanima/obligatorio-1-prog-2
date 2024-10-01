@@ -27,7 +27,9 @@ public class MiniTablero {
     public boolean jugada(String coordenada, String tipoJugador) {
         int fila = getFila(coordenada);
         int columna = getColumna(coordenada);
-        if (this.miniTablero[fila][columna].isEmpty()) {
+        if (this.miniTablero[fila][columna].isEmpty() &&
+                this.determinarGanador().equals("indeterminado")) {
+
             this.miniTablero[fila][columna] = tipoJugador;
             return true; // Jugada válida
         } else {
