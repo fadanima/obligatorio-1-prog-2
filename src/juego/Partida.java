@@ -22,19 +22,49 @@ public class Partida {
 
     // Métodos
 
+    // Constructor
+    public Partida() {
+        this.tablero = new Tablero();
+        this.finalizada = false;
+        this.resultado = "";
+    }
+
     /** Inicia una nueva partida entre los jugadores */
     public void nuevaPartida(Jugador jugadorRojo, Jugador jugadorAzul) {
-        // Inicializa una nueva partida con los jugadores dados
+        this.jugadorRojo = jugadorRojo;
+        this.jugadorAzul = jugadorAzul;
+        this.turnoActual = jugadorRojo; // Siempre empieza el jugador rojo
+        this.jugadaMagicaJugadorRojo = false;
+        this.jugadaMagicaJugadorAzul = false;
+        this.tablero = new Tablero();
+        this.finalizada = false;
+        this.resultado = "";
     }
 
     /** Registra una jugada del jugador en la partida */
-    public void registrarJugada(Jugador jugador, String coordenada) {
-        // Valida y registra la jugada en el tablero
+    public void registrarJugada(Jugador jugador, String coordenada, String coordenadaMiniTablero) {
+        if (esJugadaValida(coordenada, coordenadaMiniTablero)) {
+            ejecutarJugada(jugador, coordenada, coordenadaMiniTablero);
+            verificarGanador();
+            if (!finalizada) {
+                cambiarTurno();
+            }
+        }
     }
 
     /** Ejecuta una jugada en el tablero */
-    public void ejecutarJugada(Jugador jugador, String coordenada) {
-        // Actualiza el tablero con la jugada del jugador
+    public void ejecutarJugada(Jugador jugador, String coordenada, String coordenadaMiniTablero) {
+        tablero.jugada(tipoJugador(jugador), coordenada, coordenadaMiniTablero);
+    }
+
+    public String tipoJugador(Jugador jugador) {
+        String retorno;
+        if (jugador == jugadorRojo) {
+            retorno = "X";
+        } else {
+            retorno = "O";
+        }
+        return retorno;
     }
 
     /** Ejecuta la jugada de la CPU en el tablero */
@@ -43,14 +73,18 @@ public class Partida {
     }
 
     /** Verifica si la jugada es válida */
-    public boolean esJugadaValida(String coordenada) {
+    public boolean esJugadaValida(String coordenada, String coordenadaMiniTablero) {
         // Verifica si la jugada es válida
         return true;
     }
 
     /** Cambia el turno al siguiente jugador */
     public void cambiarTurno() {
-        // Cambia el turno de un jugador al otro
+        if (turnoActual == jugadorRojo) {
+            turnoActual = jugadorAzul;
+        } else {
+            turnoActual = jugadorRojo;
+        }
     }
 
     /** Retorna el jugador que tiene el turno actual */
@@ -65,16 +99,32 @@ public class Partida {
 
     /** Verifica si hay un ganador en la partida */
     public void verificarGanador() {
-        // Verifica si se cumplen las condiciones para ganar
+        String ganador = tablero.getGanadoresMiniTableros().determinarGanador();
+        if (!ganador.equals("indeterminado")) {
+            finalizarPartida();
+            if (ganador.equals("X")) {
+                resultado = "Rojo (X)";
+            } else if (ganador.equals("O")) {
+                resultado = "Azul (O)";
+            }
+        } else if (tablero.estaLleno()) {
+            finalizarPartida();
+            resultado = "Empate";
+        }
     }
 
     /** Finaliza la partida y establece el resultado */
     public void finalizarPartida() {
-        // Marca la partida como finalizada y establece el resultado
+        finalizada = true;
     }
 
     public void abandonarPartida() {
-        // Marca la partida como finalizada y establece el resultado
+        finalizarPartida();
+        if (turnoActual == jugadorRojo) {
+            resultado = "Azul (O)";
+        } else {
+            resultado = "Rojo (X)";
+        }
     }
 
     /** Verifica si la partida está finalizada */
