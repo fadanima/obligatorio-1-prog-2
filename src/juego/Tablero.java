@@ -31,9 +31,9 @@ public class Tablero {
     }
 
     /** Realiza una jugada en el tablero */
-    public boolean jugada(String tipoJugador, String coordenada, String coordenadaMiniTablero) {
+    public boolean jugada(String tipoJugador, String coordenada, String coordenadaEnMiniTablero) {
         MiniTablero miniTablero = this.tableroPrincipal[getFila(coordenada)][getColumna(coordenada)];
-        boolean jugada = miniTablero.jugada(coordenadaMiniTablero, tipoJugador);
+        boolean jugada = miniTablero.jugada(coordenadaEnMiniTablero, tipoJugador);
 
         // Revisa si la jugada es valida y si hay un ganador con esa jugada
         if (jugada && miniTablero.determinarGanador() != "indeterminado") {
