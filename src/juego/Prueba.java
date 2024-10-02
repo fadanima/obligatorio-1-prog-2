@@ -5,6 +5,8 @@
 
 package juego;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Esteban Moroy 338885, Facundo Martínez
@@ -28,21 +30,12 @@ public class Prueba {
         System.out.println(miniTablero.toString());
         System.out.println("");
 
-        miniTablero.jugada("C1", "O");
-        System.out.println(miniTablero.toString());
-        System.out.println("");
-
         System.out.println(miniTablero.estaLleno());
         System.out.println(miniTablero.determinarGanador());
 
         System.out.println(miniTablero.filaToString(0));
 
         Tablero tablero = new Tablero();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                tablero.setTablero(i, j, miniTablero);
-            }
-        }
 
         System.out.println(tablero.toString());
 
