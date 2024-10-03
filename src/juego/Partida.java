@@ -15,8 +15,8 @@ public class Partida {
     private Jugador jugadorAzul;
     private Tablero tablero;
     private Jugador turnoActual;
-    private boolean jugadaMagicaJugadorRojo;
-    private boolean jugadaMagicaJugadorAzul;
+    private boolean tieneJugadaMagicaJugadorRojo;
+    private boolean tieneJugadaMagicaJugadorAzul;
     private boolean finalizada;
     private String resultado;
 
@@ -34,8 +34,8 @@ public class Partida {
         this.jugadorRojo = jugadorRojo;
         this.jugadorAzul = jugadorAzul;
         this.turnoActual = jugadorRojo; // Siempre empieza el jugador rojo
-        this.jugadaMagicaJugadorRojo = false;
-        this.jugadaMagicaJugadorAzul = false;
+        this.tieneJugadaMagicaJugadorRojo = false;
+        this.tieneJugadaMagicaJugadorAzul = false;
         this.tablero = new Tablero();
         this.finalizada = false;
         this.resultado = "";
@@ -94,8 +94,15 @@ public class Partida {
     }
 
     /** Realiza la jugada mágica del jugador */
-    public void jugadaMagica(Jugador jugador) {
-        // Ejecuta la jugada mágica del jugador en el tablero
+    public void jugadaMagica(Jugador jugador, String coordenada) {
+        if (jugador.equals(jugadorRojo) && tieneJugadaMagicaJugadorRojo) {
+            tablero.limpiarMiniTablero(coordenada);
+            tieneJugadaMagicaJugadorRojo = false;
+        } else if (jugador.equals(jugadorAzul) && tieneJugadaMagicaJugadorAzul) {
+            tablero.limpiarMiniTablero(coordenada);
+            tieneJugadaMagicaJugadorAzul = false;
+        }
+        cambiarTurno();
     }
 
     /** Verifica si hay un ganador en la partida */

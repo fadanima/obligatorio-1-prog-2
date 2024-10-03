@@ -54,8 +54,9 @@ public class Tablero {
     }
 
     /** Ejecuta la jugada mágica en el mini-tablero */
-    public void jugadaMagica(String posicionMiniTablero) {
-        // Realiza una jugada mágica en un mini-tablero
+    public void limpiarMiniTablero(String coordenada) {
+        MiniTablero miniTablero = this.tableroPrincipal[getFila(coordenada)][getColumna(coordenada)];
+        miniTablero.limpiarMiniTablero();
     }
 
     /** Verifica si el tablero está completo */
