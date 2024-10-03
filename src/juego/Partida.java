@@ -54,10 +54,10 @@ public class Partida {
 
     /** Ejecuta una jugada en el tablero */
     public void ejecutarJugada(Jugador jugador, String coordenada, String coordenadaMiniTablero) {
-        tablero.jugada(tipoJugador(jugador), coordenada, coordenadaMiniTablero);
+        tablero.jugada(caracterJugador(jugador), coordenada, coordenadaMiniTablero);
     }
 
-    public String tipoJugador(Jugador jugador) {
+    public String caracterJugador(Jugador jugador) {
         String retorno;
         if (jugador == jugadorRojo) {
             retorno = "X";

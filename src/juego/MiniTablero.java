@@ -24,11 +24,11 @@ public class MiniTablero {
 
     }
 
-    public boolean jugada(String coordenada, String tipoJugador) {
+    public boolean jugada(String coordenada, String caracterJugador) {
         int fila = getFila(coordenada);
         int columna = getColumna(coordenada);
         if (this.miniTablero[fila][columna].isEmpty()) {
-            this.miniTablero[fila][columna] = tipoJugador;
+            this.miniTablero[fila][columna] = caracterJugador;
             return true; // Jugada válida
         } else {
             return false; // Jugada inválida
