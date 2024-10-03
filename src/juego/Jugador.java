@@ -14,8 +14,7 @@ public class Jugador {
     private String nombre;
     private int edad;
     private String alias;
-    private int puntaje;
-    
+
     // Constructor
     public Jugador(String nombre, int edad, String alias) {
         this.nombre = nombre;
@@ -24,38 +23,41 @@ public class Jugador {
     }
 
     // Métodos
-    
+
     /** Retorna el nombre del jugador */
     public String getNombre() {
+        return nombre;
     }
 
     /** Modifica el nombre del jugador */
     public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /** Retorna la edad del jugador */
     public int getEdad() {
+        return edad;
     }
 
     /** Modifica la edad del jugador */
     public void setEdad(int edad) {
+        this.edad = edad;
     }
 
     /** Retorna el alias del jugador */
     public String getAlias() {
+        return alias;
     }
 
     /** Modifica el alias del jugador */
     public void setAlias(String alias) {
-    }
-
-    /** Retorna el puntaje del jugador */
-    public int getPuntaje() {
+        this.alias = alias;
     }
 
     /** Compara si el jugador actual es igual a otro jugador */
     public boolean esIgualA(Jugador jugador) {
         // Retorna true si ambos jugadores tienen el mismo alias
+        return this.alias.equals(jugador.getAlias());
     }
-    
+
 }
