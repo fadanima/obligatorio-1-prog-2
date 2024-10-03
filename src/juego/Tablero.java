@@ -44,6 +44,15 @@ public class Tablero {
         return jugada;
     }
 
+    public boolean esJugadaValida(String coordenada, String coordenadaEnMiniTablero) {
+        MiniTablero miniTablero = this.tableroPrincipal[getFila(coordenada)][getColumna(coordenada)];
+        if (!estaLleno() && miniTablero.estaCasilleroVacio(coordenadaEnMiniTablero)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /** Ejecuta la jugada mágica en el mini-tablero */
     public void jugadaMagica(String posicionMiniTablero) {
         // Realiza una jugada mágica en un mini-tablero

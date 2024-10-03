@@ -35,6 +35,12 @@ public class MiniTablero {
         }
     }
 
+    public boolean estaCasilleroVacio(String coordenada) {
+        int fila = getFila(coordenada);
+        int columna = getColumna(coordenada);
+        return this.miniTablero[fila][columna].isEmpty();
+    }
+
     private int getFila(String coordenada) {
         int retorno;
         switch (coordenada.charAt(0)) {

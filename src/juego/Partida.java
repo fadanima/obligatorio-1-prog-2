@@ -43,7 +43,7 @@ public class Partida {
 
     /** Registra una jugada del jugador en la partida */
     public void registrarJugada(Jugador jugador, String coordenada, String coordenadaMiniTablero) {
-        if (esJugadaValida(coordenada, coordenadaMiniTablero)) {
+        if (tablero.esJugadaValida(coordenada, coordenadaMiniTablero)) {
             ejecutarJugada(jugador, coordenada, coordenadaMiniTablero);
             verificarGanador();
             if (!finalizada) {
@@ -69,13 +69,14 @@ public class Partida {
 
     /** Ejecuta la jugada de la CPU en el tablero */
     public void ejecutarJugadaCPU() {
-        // Genera y registra una jugada de la CPU
-    }
-
-    /** Verifica si la jugada es válida */
-    public boolean esJugadaValida(String coordenada, String coordenadaMiniTablero) {
-        // Verifica si la jugada es válida
-        return true;
+        if (turnoActual instanceof JugadorCPU) {
+            JugadorCPU cpu = (JugadorCPU) turnoActual;
+            String[] jugada = cpu.generarJugada(tablero);
+            while (!tablero.esJugadaValida(jugada[0], jugada[1])) {
+                jugada = cpu.generarJugada(tablero);
+            }
+            registrarJugada(cpu, jugada[0], jugada[1]);
+        }
     }
 
     /** Cambia el turno al siguiente jugador */
