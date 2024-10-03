@@ -14,12 +14,16 @@ public class Jugador {
     private String nombre;
     private int edad;
     private String alias;
+    private String caracter;
+    private boolean jugadaMagicaDisponible;
 
     // Constructor
-    public Jugador(String nombre, int edad, String alias) {
+    public Jugador(String nombre, int edad, String alias, String caracter, boolean jugadaMagicaDisponible) {
         this.nombre = nombre;
         this.edad = edad;
         this.alias = alias;
+        this.caracter = caracter;
+        this.jugadaMagicaDisponible = jugadaMagicaDisponible;
     }
 
     // Métodos
@@ -54,10 +58,32 @@ public class Jugador {
         this.alias = alias;
     }
 
+    public String getCaracter() {
+        return caracter;
+    }
+
+    public void setCaracter(String caracter) {
+        this.caracter = caracter;
+    }
+
+    public boolean isJugadaMagicaDisponible() {
+        return jugadaMagicaDisponible;
+    }
+
+    public void setJugadaMagicaDisponible(boolean jugadaMagicaDisponible) {
+        this.jugadaMagicaDisponible = jugadaMagicaDisponible;
+    }
+
     /** Compara si el jugador actual es igual a otro jugador */
-    public boolean esIgualA(Jugador jugador) {
-        // Retorna true si ambos jugadores tienen el mismo alias
-        return this.alias.equals(jugador.getAlias());
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Jugador) {
+            Jugador jugador = (Jugador) obj;
+            // Retorna true si ambos jugadores tienen el mismo alias
+            return this.alias.equals(jugador.getAlias());
+        } else {
+            return false;
+        }
     }
 
 }

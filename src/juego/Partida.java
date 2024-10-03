@@ -15,27 +15,20 @@ public class Partida {
     private Jugador jugadorAzul;
     private Tablero tablero;
     private Jugador turnoActual;
-    private boolean tieneJugadaMagicaJugadorRojo;
-    private boolean tieneJugadaMagicaJugadorAzul;
     private boolean finalizada;
     private String resultado;
 
     // Métodos
 
-    // Constructor
-    public Partida() {
-        this.tablero = new Tablero();
-        this.finalizada = false;
-        this.resultado = "";
-    }
-
     /** Inicia una nueva partida entre los jugadores */
     public void nuevaPartida(Jugador jugadorRojo, Jugador jugadorAzul) {
         this.jugadorRojo = jugadorRojo;
-        this.jugadorAzul = jugadorAzul;
+        this.jugadorRojo.setCaracter("X");
+        this.jugadorRojo.setJugadaMagicaDisponible(true);
         this.turnoActual = jugadorRojo; // Siempre empieza el jugador rojo
-        this.tieneJugadaMagicaJugadorRojo = false;
-        this.tieneJugadaMagicaJugadorAzul = false;
+        this.jugadorAzul = jugadorAzul;
+        this.jugadorAzul.setCaracter("O");
+        this.jugadorAzul.setJugadaMagicaDisponible(true);
         this.tablero = new Tablero();
         this.finalizada = false;
         this.resultado = "";
@@ -54,17 +47,7 @@ public class Partida {
 
     /** Ejecuta una jugada en el tablero */
     public void ejecutarJugada(Jugador jugador, String coordenada, String coordenadaMiniTablero) {
-        tablero.jugada(caracterJugador(jugador), coordenada, coordenadaMiniTablero);
-    }
-
-    public String caracterJugador(Jugador jugador) {
-        String retorno;
-        if (jugador == jugadorRojo) {
-            retorno = "X";
-        } else {
-            retorno = "O";
-        }
-        return retorno;
+        tablero.jugada(jugador.getCaracter(), coordenada, coordenadaMiniTablero);
     }
 
     /** Ejecuta la jugada de la CPU en el tablero */
@@ -95,12 +78,9 @@ public class Partida {
 
     /** Realiza la jugada mágica del jugador */
     public void jugadaMagica(Jugador jugador, String coordenada) {
-        if (jugador.equals(jugadorRojo) && tieneJugadaMagicaJugadorRojo) {
+        if (jugador.isJugadaMagicaDisponible()) {
             tablero.limpiarMiniTablero(coordenada);
-            tieneJugadaMagicaJugadorRojo = false;
-        } else if (jugador.equals(jugadorAzul) && tieneJugadaMagicaJugadorAzul) {
-            tablero.limpiarMiniTablero(coordenada);
-            tieneJugadaMagicaJugadorAzul = false;
+            jugador.setJugadaMagicaDisponible(false);
         }
         cambiarTurno();
     }
@@ -110,11 +90,7 @@ public class Partida {
         String ganador = tablero.getGanadoresMiniTableros().determinarGanador();
         if (!ganador.equals("indeterminado")) {
             finalizarPartida();
-            if (ganador.equals("X")) {
-                resultado = "Rojo (X)";
-            } else if (ganador.equals("O")) {
-                resultado = "Azul (O)";
-            }
+            resultado = turnoActual.getCaracter();
         } else if (tablero.estaLleno()) {
             finalizarPartida();
             resultado = "Empate";
@@ -128,10 +104,10 @@ public class Partida {
 
     public void abandonarPartida() {
         finalizarPartida();
-        if (turnoActual == jugadorRojo) {
-            resultado = "Azul (O)";
+        if (turnoActual.equals(jugadorRojo)) {
+            resultado = "O";
         } else {
-            resultado = "Rojo (X)";
+            resultado = "X";
         }
     }
 

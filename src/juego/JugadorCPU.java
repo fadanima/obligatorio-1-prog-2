@@ -11,8 +11,8 @@ package juego;
 
 public class JugadorCPU extends Jugador {
 
-    public JugadorCPU(String nombre, int edad, String alias) {
-        super(nombre, edad, alias);
+    public JugadorCPU(String nombre, int edad, String alias, String caracter, boolean jugadaMagicaDisponible) {
+        super(nombre, edad, alias, caracter, jugadaMagicaDisponible);
     }
 
     /**
