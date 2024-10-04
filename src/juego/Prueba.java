@@ -4,8 +4,10 @@
  */
 
 package juego;
-
+//imports
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -13,7 +15,7 @@ import java.util.Arrays;
  */
 public class Prueba {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         String[][] tableroPrueba = {
                 { "", "X", "O" },
@@ -38,6 +40,12 @@ public class Prueba {
         Tablero tablero = new Tablero();
 
         System.out.println(tablero.toString());
+
+        Sistema sistema = new Sistema();
+        Scanner teclado = new Scanner(System.in);
+        sistema.mostrarBienvenida();
+        int opcion = teclado.nextInt();
+        sistema.procesarOpcion(opcion);
 
     }
 
